@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0d0c0a" />
+<title>Olawale Emmanuel Olaonipekun — AI Automation Engineer</title>
+<meta name="description" content="Olawale Emmanuel Olaonipekun — AI Automation Engineer specialising in n8n workflows, LLM integrations, payment systems, and production-grade business automation." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0d0c0a;
+    --bg-elevated: #15130f;
+    --bg-card: #1a1814;
+    --bg-card-hover: #22201a;
+    --border: rgba(255, 240, 200, 0.08);
+    --border-bright: rgba(255, 240, 200, 0.18);
+    --text: #f5f0e6;
+    --text-muted: #8a8275;
+    --text-dim: #4d4a42;
+    --amber: #d4a843;
+    --amber-bright: #f4c95d;
+    --amber-dim: rgba(212, 168, 67, 0.12);
+    --green: #6b8e4e;
+    --display: 'Fraunces', Georgia, serif;
+    --body: 'Inter Tight', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    --pad-x: clamp(20px, 5vw, 40px);
+    --section-gap: clamp(80px, 12vw, 120px);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: var(--body);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.5;
+    font-feature-settings: 'ss01', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+    mix-blend-mode: overlay;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(800px, 100vw);
+    height: 600px;
+    background: radial-gradient(ellipse at center, rgba(212, 168, 67, 0.08), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  main { position: relative; z-index: 2; }
+  a { color: inherit; }
+  img { max-width: 100%; height: auto; display: block; }
+
+  /* ───────────────── NAV ───────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    background: rgba(13, 12, 10, 0.7);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 16px var(--pad-x);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .logo {
+    font-family: var(--display);
+    font-size: clamp(15px, 4vw, 17px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text);
+    flex-shrink: 0;
+  }
+  .logo .dot {
+    width: 6px; height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    margin-right: 10px;
+    flex-shrink: 0;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(212, 168, 67, 0.6); }
+    50% { opacity: 0.6; box-shadow: 0 0 0 8px rgba(212, 168, 67, 0); }
+  }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+    font-family: var(--mono);
+  }
+  .nav-links a:hover { color: var(--amber); }
+  .nav-cta {
+    padding: 9px 18px;
+    background: var(--amber);
+    color: var(--bg) !important;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+  }
+  .nav-cta:hover { background: var(--amber-bright) !important; transform: translateY(-1px); }
+
+  /* ───────────────── HERO ───────────────── */
+  .hero {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: clamp(110px, 22vw, 180px) var(--pad-x) clamp(60px, 12vw, 100px);
+  }
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: clamp(28px, 6vw, 48px);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.1s forwards;
+  }
+  .hero-meta .bar { width: 32px; height: 1px; background: var(--amber); flex-shrink: 0; }
+  .hero-meta .sep { color: var(--text-dim); }
+
+  .hero-title {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(42px, 11vw, 132px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    margin-bottom: clamp(28px, 5vw, 40px);
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.25s forwards;
+  }
+  .hero-title .em { font-style: italic; font-weight: 300; color: var(--amber); }
+  .hero-title .opt { font-variation-settings: "opsz" 144; font-weight: 500; }
+
+  .hero-sub {
+    max-width: 720px;
+    font-size: clamp(15px, 2.6vw, 19px);
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: clamp(36px, 7vw, 56px);
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.45s forwards;
+  }
+  .hero-sub strong { color: var(--text); font-weight: 500; }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.6s forwards;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    letter-spacing: 0.01em;
+    min-height: 44px;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--amber); color: var(--bg); }
+  .btn-primary:hover { background: var(--amber-bright); transform: translateY(-2px); box-shadow: 0 10px 40px rgba(212, 168, 67, 0.25); }
+  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border-bright); }
+  .btn-ghost:hover { background: var(--bg-card); border-color: var(--amber); color: var(--amber); }
+  .btn .arrow { transition: transform 0.25s ease; }
+  .btn:hover .arrow { transform: translate(3px, -3px); }
+
+  .hero-stats {
+    margin-top: clamp(56px, 11vw, 96px);
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(20px, 4vw, 32px);
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.75s forwards;
+  }
+  .stat-item .stat-num {
+    font-family: var(--display);
+    font-size: clamp(30px, 5.5vw, 44px);
+    font-weight: 500;
+    color: var(--amber);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-feature-settings: 'tnum';
+  }
+  .stat-item .stat-num sup {
+    font-size: 0.4em;
+    color: var(--text-muted);
+    margin-left: 2px;
+    vertical-align: top;
+  }
+  .stat-item .stat-label {
+    margin-top: 10px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ───────────────── SECTION HEADER ───────────────── */
+  .section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--section-gap) var(--pad-x) 40px;
+  }
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .section-label .num {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--text-dim);
+    font-size: 28px;
+  }
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(30px, 6vw, 64px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 22px;
+    max-width: 900px;
+  }
+  .section-title .em { font-style: italic; color: var(--amber); }
+  .section-intro {
+    max-width: 720px;
+    font-size: clamp(15px, 2.2vw, 17px);
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: clamp(40px, 8vw, 64px);
+  }
+
+  /* ───────────────── ABOUT ───────────────── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .about-text p {
+    font-size: clamp(15px, 2.2vw, 17px);
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+  .about-text p:last-child { color: var(--text-muted); }
+  .about-side {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--border);
+    padding-left: 32px;
+  }
+  .about-row {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .about-row:last-child { border-bottom: none; }
+  .about-row .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .about-row .value {
+    font-size: 14px;
+    color: var(--text);
+    text-align: right;
+    font-weight: 500;
+  }
+  .about-row .value.dim { color: var(--text-muted); font-weight: 400; }
+
+  /* ───────────────── STACK ───────────────── */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .stack-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px;
+    transition: all 0.3s ease;
+  }
+  .stack-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-bright);
+    transform: translateY(-3px);
+  }
+  .stack-card .stack-icon {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    background: var(--amber-dim);
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 17px;
+    margin-bottom: 18px;
+  }
+  .stack-card h4 {
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .stack-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .stack-card .stack-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .stack-card .stack-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    background: rgba(255, 240, 200, 0.04);
+    padding: 4px 9px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ───────────────── PROJECTS ───────────────── */
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .project {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+  }
+  .project:hover {
+    border-color: var(--border-bright);
+    background: var(--bg-card-hover);
+  }
+  .project-header {
+    padding: clamp(24px, 4vw, 36px) clamp(24px, 4vw, 40px) 22px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 24px;
+    align-items: start;
+    border-bottom: 1px solid var(--border);
+  }
+  .project-num {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(40px, 7vw, 64px);
+    color: var(--text-dim);
+    line-height: 0.9;
+    min-width: 50px;
+    transition: color 0.3s ease;
+  }
+  .project:hover .project-num { color: var(--amber); }
+  .project-headline h3 {
+    font-family: var(--display);
+    font-size: clamp(22px, 3.5vw, 30px);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    line-height: 1.15;
+  }
+  .project-headline .project-sub {
+    font-size: clamp(12px, 1.8vw, 14px);
+    color: var(--text-muted);
+    font-family: var(--mono);
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+  }
+  .project-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--green);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(107, 142, 78, 0.1);
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(107, 142, 78, 0.25);
+    white-space: nowrap;
+    height: fit-content;
+  }
+  .project-status .dot {
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse-green 2s ease infinite;
+  }
+  @keyframes pulse-green {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .project-status.archived {
+    color: var(--text-muted);
+    background: rgba(255, 240, 200, 0.04);
+    border-color: var(--border);
+  }
+  .project-status.archived .dot { background: var(--text-muted); animation: none; }
+
+  .project-body {
+    padding: clamp(24px, 4vw, 32px) clamp(24px, 4vw, 40px) clamp(28px, 5vw, 40px);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: clamp(28px, 5vw, 48px);
+  }
+  .project-main h5 {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--amber);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .project-main p {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: 22px;
+  }
+  .project-main p.dim { color: var(--text-muted); }
+  .project-features { list-style: none; margin-bottom: 22px; }
+  .project-features li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+  .project-features li::before {
+    content: '';
+    width: 4px; height: 4px;
+    background: var(--amber);
+    border-radius: 50%;
+    margin-top: 9px;
+    flex-shrink: 0;
+  }
+  .project-features li:last-child { border-bottom: none; }
+  .project-features li strong { color: var(--text); font-weight: 600; }
+  .project-features li span { color: var(--text-muted); }
+
+  .project-side .side-block { margin-bottom: 26px; }
+  .project-side .side-block:last-child { margin-bottom: 0; }
+  .project-side h6 {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .stack-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .stack-pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text);
+    background: rgba(255, 240, 200, 0.06);
+    border: 1px solid var(--border);
+    padding: 5px 10px;
+    border-radius: 5px;
+    letter-spacing: 0.02em;
+  }
+  .stack-pill.accent {
+    background: var(--amber-dim);
+    color: var(--amber);
+    border-color: rgba(212, 168, 67, 0.25);
+  }
+  .impact-list { list-style: none; }
+  .impact-list li {
+    padding: 8px 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-muted);
+    border-bottom: 1px dashed var(--border);
+  }
+  .impact-list li:last-child { border-bottom: none; }
+  .impact-list li strong {
+    color: var(--amber);
+    font-family: var(--mono);
+    font-size: 13.5px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* ───────────────── SECURITY ───────────────── */
+  .security-wrap {
+    background: linear-gradient(180deg, transparent, rgba(212, 168, 67, 0.025));
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    padding: clamp(32px, 6vw, 56px) clamp(24px, 5vw, 48px);
+    position: relative;
+    overflow: hidden;
+  }
+  .security-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--amber), transparent);
+  }
+  .security-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .security-card {
+    background: rgba(13, 12, 10, 0.4);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px;
+    transition: all 0.3s ease;
+  }
+  .security-card:hover {
+    border-color: rgba(212, 168, 67, 0.3);
+    background: rgba(13, 12, 10, 0.6);
+  }
+  .security-card .sec-icon {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--amber-dim);
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(212, 168, 67, 0.2);
+  }
+  .security-card h4 {
+    font-family: var(--display);
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .security-card p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .trust-statement {
+    margin-top: 36px;
+    padding: 28px 32px;
+    background: rgba(13, 12, 10, 0.5);
+    border-left: 2px solid var(--amber);
+    border-radius: 8px;
+  }
+  .trust-statement p {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(15px, 2.4vw, 18px);
+    line-height: 1.55;
+    color: var(--text);
+    font-weight: 400;
+  }
+  .trust-statement p::before { content: '\201C '; color: var(--amber); }
+  .trust-statement p::after { content: ' \201D'; color: var(--amber); }
+
+  /* ───────────────── SERVICES ───────────────── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .service {
+    padding: 32px 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+  }
+  .service:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--amber);
+  }
+  .service .service-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-bottom: 22px;
+    letter-spacing: 0.08em;
+  }
+  .service h4 {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .service p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ───────────────── PROCESS ───────────────── */
+  .process-list { border-top: 1px solid var(--border); }
+  .process-row {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 70px 1fr 2fr;
+    gap: clamp(20px, 4vw, 48px);
+    align-items: start;
+    transition: padding 0.3s ease;
+  }
+  .process-row:hover { padding-left: 12px; }
+  .process-num {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 30px;
+    color: var(--amber);
+    font-weight: 400;
+  }
+  .process-row h4 {
+    font-family: var(--display);
+    font-size: clamp(18px, 2.6vw, 22px);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .process-row p {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ───────────────── CTA ───────────────── */
+  .cta-section {
+    max-width: 1280px;
+    margin: clamp(60px, 10vw, 80px) auto 0;
+    padding: clamp(60px, 12vw, 80px) var(--pad-x) clamp(70px, 14vw, 100px);
+    text-align: center;
+    border-top: 1px solid var(--border);
+    position: relative;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 1px;
+    background: var(--amber);
+  }
+  .cta-section .pre-cta {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--amber);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 24px;
+  }
+  .cta-section h2 {
+    font-family: var(--display);
+    font-size: clamp(34px, 7vw, 88px);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    margin-bottom: 28px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-section h2 .em { font-style: italic; color: var(--amber); font-weight: 300; }
+  .cta-section p {
+    font-size: clamp(15px, 2.4vw, 18px);
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 580px;
+    margin: 0 auto 40px;
+  }
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .cta-buttons .btn { word-break: break-word; }
+
+  /* ───────────────── FOOTER ───────────────── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 44px var(--pad-x);
+    background: var(--bg-elevated);
+  }
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 44px;
+    align-items: start;
+  }
+  .footer-brand .logo { font-size: 20px; margin-bottom: 14px; }
+  .footer-brand p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 320px;
+  }
+  .footer-col h6 {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 14px;
+  }
+  .footer-col a {
+    display: block;
+    font-size: 14px;
+    color: var(--text);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.2s ease;
+  }
+  .footer-col a:hover { color: var(--amber); }
+  .footer-bottom {
+    max-width: 1280px;
+    margin: 40px auto 0;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+  }
+
+  /* ═════════════════ RESPONSIVE ═════════════════ */
+
+  /* Tablet */
+  @media (max-width: 980px) {
+    .stack-grid { grid-template-columns: repeat(2, 1fr); }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { gap: 40px; }
+  }
+
+  /* Mobile */
+  @media (max-width: 720px) {
+    .nav-links { gap: 12px; }
+    .nav-links a:not(.nav-cta) { display: none; }
+
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .about-side {
+      border-left: none;
+      padding-left: 0;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+    .about-row { flex-wrap: nowrap; }
+    .about-row .value { font-size: 13px; }
+
+    .project-header {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .project-num { font-size: 38px; }
+    .project-status { align-self: flex-start; }
+    .project-body { grid-template-columns: 1fr; gap: 28px; }
+
+    .security-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+
+    .process-row {
+      grid-template-columns: 50px 1fr;
+      gap: 16px;
+      padding: 24px 0;
+    }
+    .process-row p { grid-column: 2; margin-top: 8px; }
+    .process-num { font-size: 26px; }
+
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; justify-content: center; }
+    .footer-bottom span { text-align: center; }
+
+    .trust-statement { padding: 24px; }
+
+    .btn { padding: 13px 20px; font-size: 13.5px; }
+  }
+
+  /* Small mobile */
+  @media (max-width: 420px) {
+    .nav-cta { padding: 8px 14px; font-size: 11px; }
+    .logo { font-size: 14px; }
+    .hero-stats { gap: 20px 16px; }
+    .stack-grid { grid-template-columns: 1fr; }
+    .project-header { padding: 22px 20px 18px; }
+    .project-body { padding: 22px 20px 26px; }
+    .stack-card { padding: 22px; }
+    .security-card { padding: 22px; }
+    .service { padding: 26px 22px; }
+    .cta-buttons { flex-direction: column; align-items: stretch; }
+    .cta-buttons .btn { justify-content: center; }
+  }
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo"><span class="dot"></span>Olawale Emmanuel</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#stack">Stack</a>
+      <a href="#security">Security</a>
+      <a href="#services">Services</a>
+      <a href="#contact" class="nav-cta">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ───────────────── HERO ───────────────── -->
+<section class="hero">
+  <div class="hero-meta">
+    <span class="bar"></span>
+    <span>Portfolio &mdash; 2026</span>
+    <span class="sep">·</span>
+    <span>Lagos, Nigeria · Remote worldwide</span>
+  </div>
+
+  <h1 class="hero-title">
+    I build <span class="em">automation systems</span><br />
+    that run real <span class="opt">businesses</span>.
+  </h1>
+
+  <p class="hero-sub">
+    I'm <strong>Olawale Emmanuel Olaonipekun</strong> &mdash; an AI Automation Engineer specialising in production-grade workflow systems powered by n8n, large language models, and modern API ecosystems. I design and ship the kind of infrastructure that lets a small team operate like a much larger one &mdash; quietly, reliably, around the clock.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#work" class="btn btn-primary">
+      View selected work
+      <span class="arrow">↗</span>
+    </a>
+    <a href="#contact" class="btn btn-ghost">Start a project</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">15<sup>+</sup></div>
+      <div class="stat-label">Production workflows shipped</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Live client systems</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Cities served</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Production uptime</div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────── ABOUT ───────────────── -->
+<section class="section" id="about">
+  <div class="section-label">
+    <span class="num">01</span>
+    <span>About</span>
+  </div>
+  <h2 class="section-title">
+    Automation is not a tool. <span class="em">It is a discipline.</span>
+  </h2>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I treat every automation project the way a senior engineer treats production infrastructure &mdash; with retry logic, error logging, version control, and a clear handoff path. The goal isn't to build something clever in a sandbox. It is to build something that survives Monday morning at 8am, when a real customer is waiting on a real reply.
+      </p>
+      <p>
+        My core stack is n8n for orchestration, Supabase and PostgreSQL for data, Anthropic and OpenAI for intelligence, and Twilio, Monnify, Telegram, and Google Workspace for the channels that businesses actually live on. I work primarily with founders and operators in West Africa, but I build systems that meet international standards.
+      </p>
+      <p>
+        Most of my work runs in production today &mdash; serving customers, processing payments, qualifying leads, and alerting kitchens that an order has come in. That is the only kind of work I take seriously.
+      </p>
+    </div>
+
+    <div class="about-side">
+      <div class="about-row">
+        <span class="label">Based in</span>
+        <span class="value">Lagos, Nigeria</span>
+      </div>
+      <div class="about-row">
+        <span class="label">Availability</span>
+        <span class="value">Open to roles &amp; contracts</span>
+      </div>
+      <div class="about-row">
+        <span class="label">Work mode</span>
+        <span class="value">Remote · Hybrid</span>
+      </div>
+      <div class="about-row">
+        <span class="label">Time zone</span>
+        <span class="value">WAT (GMT+1)</span>
+      </div>
+      <div class="about-row">
+        <span class="label">Languages</span>
+        <span class="value">English · Yoruba</span>
+      </div>
+      <div class="about-row">
+        <span class="label">Focus</span>
+        <span class="value dim">n8n · LLM workflows · Payments · Dashboards</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────── STACK ───────────────── -->
+<section class="section" id="stack">
+  <div class="section-label">
+    <span class="num">02</span>
+    <span>Stack</span>
+  </div>
+  <h2 class="section-title">
+    The tools <span class="em">I reach for</span>.
+  </h2>
+  <p class="section-intro">
+    My stack is intentionally narrow and deep. I'd rather know five tools deeply than fifty tools superficially &mdash; because production systems break in the details, and the details are where experience compounds.
+  </p>
+
+  <div class="stack-grid">
+    <div class="stack-card">
+      <div class="stack-icon">O</div>
+      <h4>Orchestration</h4>
+      <p>The control plane for every system I build. Self-hosted or cloud, with version-controlled workflow JSON.</p>
+      <div class="stack-tags">
+        <span class="stack-tag">n8n</span>
+        <span class="stack-tag">Make.com</span>
+        <span class="stack-tag">Cron</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <div class="stack-icon">I</div>
+      <h4>Intelligence</h4>
+      <p>LLM integration for natural language, classification, qualification, and structured JSON extraction.</p>
+      <div class="stack-tags">
+        <span class="stack-tag">Anthropic Claude</span>
+        <span class="stack-tag">OpenAI GPT</span>
+        <span class="stack-tag">Whisper</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <div class="stack-icon">D</div>
+      <h4>Data</h4>
+      <p>Relational and document storage, with row-level security and clean schema design as a default.</p>
+      <div class="stack-tags">
+        <span class="stack-tag">Supabase</span>
+        <span class="stack-tag">PostgreSQL</span>
+        <span class="stack-tag">Google Sheets</span>
+        <span class="stack-tag">Airtable</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <div class="stack-icon">P</div>
+      <h4>Payments</h4>
+      <p>Nigerian gateways with webhook verification, idempotency checks, and server-side amount validation.</p>
+      <div class="stack-tags">
+        <span class="stack-tag">Monnify</span>
+        <span class="stack-tag">Paystack</span>
+        <span class="stack-tag">HMAC</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <div class="stack-icon">C</div>
+      <h4>Channels</h4>
+      <p>The places real customers and teams actually are &mdash; messaging, alerts, and email infrastructure.</p>
+      <div class="stack-tags">
+        <span class="stack-tag">Twilio WhatsApp</span>
+        <span class="stack-tag">Telegram</span>
+        <span class="stack-tag">SMTP</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <div class="stack-icon">F</div>
+      <h4>Frontend</h4>
+      <p>Lightweight, single-file dashboards, order forms, and admin panels &mdash; deployed to a CDN, secured with auth.</p>
+      <div class="stack-tags">
+        <span class="stack-tag">HTML/CSS</span>
+        <span class="stack-tag">Vanilla JS</span>
+        <span class="stack-tag">Chart.js</span>
+        <span class="stack-tag">Vercel</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <div class="stack-icon">S</div>
+      <h4>Scraping</h4>
+      <p>Compliant data acquisition for lead generation and market intelligence pipelines.</p>
+      <div class="stack-tags">
+        <span class="stack-tag">Apify</span>
+        <span class="stack-tag">HTTP Request</span>
+        <span class="stack-tag">Cheerio</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <div class="stack-icon">∞</div>
+      <h4>Infrastructure</h4>
+      <p>Linux servers with Docker, nginx, and SSL &mdash; configured by hand and documented for handoff.</p>
+      <div class="stack-tags">
+        <span class="stack-tag">Ubuntu</span>
+        <span class="stack-tag">Docker</span>
+        <span class="stack-tag">nginx</span>
+        <span class="stack-tag">Certbot</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────── WORK ───────────────── -->
+<section class="section" id="work">
+  <div class="section-label">
+    <span class="num">03</span>
+    <span>Selected work</span>
+  </div>
+  <h2 class="section-title">
+    Real systems. <span class="em">Real customers.</span>
+  </h2>
+  <p class="section-intro">
+    Five representative builds &mdash; each one chosen because it solves a clearly defined business problem, runs in production today, and demonstrates a different facet of automation engineering.
+  </p>
+
+  <div class="projects-list">
+
+    <!-- PROJECT 01 -->
+    <article class="project">
+      <header class="project-header">
+        <div class="project-num">01</div>
+        <div class="project-headline">
+          <h3>Amala Sky &mdash; WhatsApp Commerce Bot</h3>
+          <div class="project-sub">Conversational ordering system · Restaurant chain · Lagos &amp; Abuja</div>
+        </div>
+        <div class="project-status"><span class="dot"></span>Live in production</div>
+      </header>
+      <div class="project-body">
+        <div class="project-main">
+          <h5>The problem</h5>
+          <p>The brand was managing high-volume bulk orders manually over WhatsApp, with no system to confirm payment, prevent abandoned carts, or alert kitchens in real time. Orders were being missed during peak hours, and management had no operational view of what was happening across both branches.</p>
+
+          <h5>What I built</h5>
+          <p class="dim">A complete WhatsApp commerce stack &mdash; from message ingestion to kitchen alert &mdash; running 24/7 on dedicated cloud infrastructure. The bot understands natural language and voice notes in English, Pidgin, Yoruba, and Hausa, and adapts its menu, pricing, and delivery flow to the customer's city.</p>
+
+          <ul class="project-features">
+            <li><strong>Multi-step conversation engine</strong> <span>&mdash; full state machine covering city selection, menu, cart, modifiers, delivery vs. pickup, summary, and payment, persisted per phone number.</span></li>
+            <li><strong>Natural-language ordering</strong> <span>&mdash; customers type in plain language or send voice notes; the LLM extracts items, quantities, and intent.</span></li>
+            <li><strong>Discount tier logic</strong> <span>&mdash; automatic bulk discounts applied server-side at summary stage, never client-trusted.</span></li>
+            <li><strong>Real-time kitchen routing</strong> <span>&mdash; payment confirmation fires an alert to the correct city's kitchen channel with the full order breakdown.</span></li>
+            <li><strong>Abandoned cart recovery</strong> <span>&mdash; scheduled workflow checks for incomplete sessions and re-engages customers automatically.</span></li>
+            <li><strong>Daily operations summary</strong> <span>&mdash; management receives an end-of-day report covering orders, revenue, and staff escalations.</span></li>
+          </ul>
+        </div>
+
+        <aside class="project-side">
+          <div class="side-block">
+            <h6>Stack</h6>
+            <div class="stack-pills">
+              <span class="stack-pill accent">n8n</span>
+              <span class="stack-pill">Twilio WhatsApp</span>
+              <span class="stack-pill">OpenAI GPT</span>
+              <span class="stack-pill">Whisper</span>
+              <span class="stack-pill">Google Sheets</span>
+              <span class="stack-pill">Telegram</span>
+              <span class="stack-pill">Ubuntu VPS</span>
+              <span class="stack-pill">Docker</span>
+              <span class="stack-pill">nginx</span>
+            </div>
+          </div>
+          <div class="side-block">
+            <h6>Scope</h6>
+            <ul class="impact-list">
+              <li><strong>11+ workflows</strong> spanning incoming messages, cart recovery, daily reports, dashboard auth, and staff routing.</li>
+              <li><strong>Two-city deployment</strong> with city-specific menus, pricing, and kitchen routing.</li>
+              <li><strong>Four input modes</strong> &mdash; keyword, free-text, voice note, and natural language across four languages.</li>
+            </ul>
+          </div>
+          <div class="side-block">
+            <h6>Role</h6>
+            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.55;">End-to-end automation engineer &mdash; architecture, build, server deployment, integrations, and operational handover.</p>
+          </div>
+        </aside>
+      </div>
+    </article>
+
+    <!-- PROJECT 02 -->
+    <article class="project">
+      <header class="project-header">
+        <div class="project-num">02</div>
+        <div class="project-headline">
+          <h3>Amala Sky &mdash; Web Order Form &amp; Monnify Payment System</h3>
+          <div class="project-sub">QR-code ordering · Virtual account payments · Instant kitchen routing</div>
+        </div>
+        <div class="project-status"><span class="dot"></span>Live in production</div>
+      </header>
+      <div class="project-body">
+        <div class="project-main">
+          <h5>The problem</h5>
+          <p>WhatsApp ordering works beautifully for customers who already use the app &mdash; but walk-in customers, table scanners, and first-time visitors needed a friction-free way to order without opening a chat. The team also needed a way to take instant bank transfers, card payments, and USSD across all major Nigerian banks &mdash; with automatic order confirmation the moment money lands.</p>
+
+          <h5>What I built</h5>
+          <p class="dim">A mobile-first web order form and a fully integrated Monnify payment system, sharing the same workflow back-end as the WhatsApp bot. A customer scans a QR code, fills the form, and is redirected straight to a payment page &mdash; no WhatsApp required. The moment payment clears, the order flows into the same kitchen and management pipeline as every other order.</p>
+
+          <ul class="project-features">
+            <li><strong>Mobile-first order form</strong> <span>&mdash; clean responsive web page customers reach by scanning an in-store QR code; submits to a secured webhook with anti-abuse headers and a server-side total recalculation.</span></li>
+            <li><strong>Monnify integration</strong> <span>&mdash; transaction-specific virtual accounts generated on the fly, supporting bank transfer, card, and USSD across all major Nigerian banks.</span></li>
+            <li><strong>Inline payment redirect</strong> <span>&mdash; the payment link appears directly on the success page and auto-redirects customers to Monnify, so QR-code customers never need WhatsApp.</span></li>
+            <li><strong>Webhook payment confirmation</strong> <span>&mdash; the bot confirms orders the instant Monnify reports a successful transaction; no manual reconciliation needed.</span></li>
+            <li><strong>Server-side amount validation</strong> <span>&mdash; the amount Monnify reports paid is checked against the amount the system stored at order time, preventing client-side manipulation.</span></li>
+            <li><strong>Idempotency guard</strong> <span>&mdash; the same payment reference is never processed twice, protecting against replay attacks.</span></li>
+            <li><strong>Receipt &amp; kitchen alert</strong> <span>&mdash; on confirmation, the customer gets a WhatsApp receipt (if a number was provided) and the correct branch kitchen is alerted instantly.</span></li>
+          </ul>
+        </div>
+
+        <aside class="project-side">
+          <div class="side-block">
+            <h6>Stack</h6>
+            <div class="stack-pills">
+              <span class="stack-pill accent">Monnify</span>
+              <span class="stack-pill">n8n</span>
+              <span class="stack-pill">HTML/CSS/JS</span>
+              <span class="stack-pill">Google Sheets</span>
+              <span class="stack-pill">Telegram</span>
+              <span class="stack-pill">nginx</span>
+              <span class="stack-pill">SSL</span>
+            </div>
+          </div>
+          <div class="side-block">
+            <h6>Key engineering choices</h6>
+            <ul class="impact-list">
+              <li><strong>Pre-issued totals</strong> <span style="font-family: var(--body); font-weight: 400; color: var(--text-muted); font-size: 12.5px; display: block;">Server stores the canonical order total; client cannot alter it.</span></li>
+              <li><strong>Webhook secret header</strong> <span style="font-family: var(--body); font-weight: 400; color: var(--text-muted); font-size: 12.5px; display: block;">Web form requests are signed with a rotating shared secret.</span></li>
+              <li><strong>Abandoned cleanup</strong> <span style="font-family: var(--body); font-weight: 400; color: var(--text-muted); font-size: 12.5px; display: block;">Daily job marks unpaid orders older than 24 hours as abandoned.</span></li>
+            </ul>
+          </div>
+          <div class="side-block">
+            <h6>Role</h6>
+            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.55;">Sole engineer &mdash; payment architecture, web form, workflow integration, and end-to-end testing through sandbox to live.</p>
+          </div>
+        </aside>
+      </div>
+    </article>
+
+    <!-- PROJECT 03 -->
+    <article class="project">
+      <header class="project-header">
+        <div class="project-num">03</div>
+        <div class="project-headline">
+          <h3>Amala Sky &mdash; Staff Operations Dashboard</h3>
+          <div class="project-sub">Role-based admin panel · Live orders · Menu control · Branch analytics</div>
+        </div>
+        <div class="project-status"><span class="dot"></span>Live in production</div>
+      </header>
+      <div class="project-body">
+        <div class="project-main">
+          <h5>The problem</h5>
+          <p>Once the bot and the payment system were live, the operations team needed a single place to see what was happening &mdash; without diving into spreadsheets, the workflow engine, or the payment dashboard. Different team members needed different views: kitchen staff only care about their branch's incoming orders, branch managers care about a full branch overview, and admins need everything.</p>
+
+          <h5>What I built</h5>
+          <p class="dim">A single-page web dashboard with role-based access, authenticated login, and live data feeds from the same back-end that powers the bot &mdash; protected behind a secure path on the same domain.</p>
+
+          <ul class="project-features">
+            <li><strong>Role-based access control</strong> <span>&mdash; three roles (admin, branch manager, kitchen staff) with each role seeing only the data and controls relevant to their job.</span></li>
+            <li><strong>Authenticated login &amp; sessions</strong> <span>&mdash; staff log in with username and password; sessions expire after a fixed window of activity and idle time.</span></li>
+            <li><strong>Live orders feed</strong> <span>&mdash; real-time list of incoming orders by branch, with status, customer reference, and totals.</span></li>
+            <li><strong>Menu availability toggle</strong> <span>&mdash; kitchen staff can instantly mark items as available or out-of-stock; the bot picks up changes within seconds, so customers never order what isn't available.</span></li>
+            <li><strong>Branch analytics</strong> <span>&mdash; managers see order volume, revenue, fulfilment status, and trend charts scoped strictly to their branch.</span></li>
+            <li><strong>Token-gated APIs</strong> <span>&mdash; every dashboard endpoint requires an authenticated token; no public scraping of customer data is possible.</span></li>
+            <li><strong>Logout &amp; multi-device</strong> <span>&mdash; clean logout flow; staff can work from any device with no local install required.</span></li>
+          </ul>
+        </div>
+
+        <aside class="project-side">
+          <div class="side-block">
+            <h6>Stack</h6>
+            <div class="stack-pills">
+              <span class="stack-pill accent">n8n</span>
+              <span class="stack-pill">HTML/CSS/JS</span>
+              <span class="stack-pill">Chart.js</span>
+              <span class="stack-pill">Google Sheets</span>
+              <span class="stack-pill">HMAC tokens</span>
+              <span class="stack-pill">nginx</span>
+            </div>
+          </div>
+          <div class="side-block">
+            <h6>Roles supported</h6>
+            <ul class="impact-list">
+              <li><strong>Admin</strong> <span style="font-family: var(--body); font-weight: 400; color: var(--text-muted); font-size: 12.5px; display: block;">Full visibility across both branches plus configuration.</span></li>
+              <li><strong>Branch manager</strong> <span style="font-family: var(--body); font-weight: 400; color: var(--text-muted); font-size: 12.5px; display: block;">Their branch only — orders, analytics, menu, escalations.</span></li>
+              <li><strong>Kitchen staff</strong> <span style="font-family: var(--body); font-weight: 400; color: var(--text-muted); font-size: 12.5px; display: block;">Branch orders + menu availability toggle, nothing else.</span></li>
+            </ul>
+          </div>
+          <div class="side-block">
+            <h6>Role</h6>
+            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.55;">Designer and builder &mdash; UX flow, frontend, authentication workflows, role enforcement, and ongoing maintenance.</p>
+          </div>
+        </aside>
+      </div>
+    </article>
+
+    <!-- PROJECT 04 -->
+    <article class="project">
+      <header class="project-header">
+        <div class="project-num">04</div>
+        <div class="project-headline">
+          <h3>FOC INC &mdash; Strategic Event Calendar System</h3>
+          <div class="project-sub">Operational database &amp; live dashboard · Event-driven brand portfolio</div>
+        </div>
+        <div class="project-status"><span class="dot"></span>Live · Phase 1 complete</div>
+      </header>
+      <div class="project-body">
+        <div class="project-main">
+          <h5>The problem</h5>
+          <p>FOC INC operates 17+ projects across food, talent, media, and brand services &mdash; all activated against a calendar of 50+ Nigerian cultural, music, food, and corporate events each year. The existing calendar was a static HTML page: beautiful to look at, impossible to query, and disconnected from operations. Leadership couldn't see at a glance which months were busiest, which projects were overcommitted, or where activations were colliding.</p>
+
+          <h5>What I built</h5>
+          <p class="dim">A relational database, a public-facing dashboard, and an admin layer &mdash; replacing the static calendar with a queryable, role-aware operational system the whole organisation can act from.</p>
+
+          <ul class="project-features">
+            <li><strong>Relational schema</strong> <span>&mdash; six interconnected tables covering events, categories, projects, activation links, locations, and post-event outcomes, with row-level security.</span></li>
+            <li><strong>Live management dashboard</strong> <span>&mdash; a single-page web app pulling real-time data, with overview KPIs, filterable event list, project leaderboard, and a year-at-a-glance timeline.</span></li>
+            <li><strong>Custom admin panel</strong> <span>&mdash; authenticated CRUD interface for non-technical admins to add events, manage projects, and upload briefs and flyers per event.</span></li>
+            <li><strong>Recruitment &amp; brand services modules</strong> <span>&mdash; expansion layer adding role management, application tracking, and client brief intake on top of the same data foundation.</span></li>
+            <li><strong>Phase 2 automation layer</strong> <span>&mdash; n8n workflows for event countdowns, monthly digests, conflict detection, and post-event ROI collection.</span></li>
+          </ul>
+        </div>
+
+        <aside class="project-side">
+          <div class="side-block">
+            <h6>Stack</h6>
+            <div class="stack-pills">
+              <span class="stack-pill accent">Supabase</span>
+              <span class="stack-pill">PostgreSQL</span>
+              <span class="stack-pill">HTML/CSS/JS</span>
+              <span class="stack-pill">Chart.js</span>
+              <span class="stack-pill">n8n</span>
+              <span class="stack-pill">Vercel</span>
+            </div>
+          </div>
+          <div class="side-block">
+            <h6>Scope</h6>
+            <ul class="impact-list">
+              <li><strong>50+ events</strong> structured, categorised, and mapped to internal projects across the year.</li>
+              <li><strong>17 projects</strong> integrated with activation roles (Primary, Secondary, Support, Awareness).</li>
+              <li><strong>Multi-admin access</strong> with row-level permissions and audit-friendly logging.</li>
+            </ul>
+          </div>
+          <div class="side-block">
+            <h6>Role</h6>
+            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.55;">Data architect, full-stack builder, and automation lead &mdash; from schema design through dashboard build to phase-two workflow integration.</p>
+          </div>
+        </aside>
+      </div>
+    </article>
+
+    <!-- PROJECT 05 -->
+    <article class="project">
+      <header class="project-header">
+        <div class="project-num">05</div>
+        <div class="project-headline">
+          <h3>Lead Intelligence Pipeline</h3>
+          <div class="project-sub">Automated B2B lead discovery, qualification &amp; scoring</div>
+        </div>
+        <div class="project-status"><span class="dot"></span>Production-ready</div>
+      </header>
+      <div class="project-body">
+        <div class="project-main">
+          <h5>The problem</h5>
+          <p>Finding qualified prospects for an AI booking and receptionist offering &mdash; restaurants, salons, medspas, home service providers &mdash; requires combing through hundreds of listings across markets, evaluating each for genuine fit, and reaching the right ones first. Done manually it's a full-time job. Done badly, it burns budget on cold lists and erodes outreach reply rates.</p>
+
+          <h5>What I built</h5>
+          <p class="dim">A daily, fully-automated pipeline that discovers small businesses on Google Maps, normalises and deduplicates them, detects their existing booking tools from their website, qualifies each one with a structured LLM call, scores them with a deterministic weighted formula, and alerts the operator only on the highest-fit leads.</p>
+
+          <ul class="project-features">
+            <li><strong>Daily discovery</strong> <span>&mdash; scheduled workflow rotates through category and city seeds, hitting Apify's canonical Google Maps actor and returning structured place data.</span></li>
+            <li><strong>Tech-stack detection</strong> <span>&mdash; lightweight regex-based website analysis flags existing booking tools so we know exactly what's already in place.</span></li>
+            <li><strong>AI qualification</strong> <span>&mdash; a single Claude API call per lead produces structured JSON: sub-scores, pain points, signals detected, and suggested outreach angle.</span></li>
+            <li><strong>Deterministic scoring</strong> <span>&mdash; final 1–10 score is computed in code, not by the LLM, using a weighted formula across booking friction, manual dependence, automation gap, and activity signals.</span></li>
+            <li><strong>Operator notification</strong> <span>&mdash; high-value leads trigger an instant alert with the score, signals, and angle, ready for outreach.</span></li>
+            <li><strong>Failure observability</strong> <span>&mdash; scraper and AI failures land in a separate log with stage, error code, and seed query, so the pipeline degrades gracefully.</span></li>
+          </ul>
+        </div>
+
+        <aside class="project-side">
+          <div class="side-block">
+            <h6>Stack</h6>
+            <div class="stack-pills">
+              <span class="stack-pill accent">n8n</span>
+              <span class="stack-pill">Apify</span>
+              <span class="stack-pill">Anthropic Claude</span>
+              <span class="stack-pill">Google Sheets</span>
+              <span class="stack-pill">Telegram</span>
+            </div>
+          </div>
+          <div class="side-block">
+            <h6>Engineering choices</h6>
+            <ul class="impact-list">
+              <li><strong>Portable build</strong> <span style="font-family: var(--body); font-weight: 400; color: var(--text-muted); font-size: 12.5px; display: block;">HTTP Request nodes instead of community nodes — imports cleanly into any n8n instance.</span></li>
+              <li><strong>Cost-tuned model</strong> <span style="font-family: var(--body); font-weight: 400; color: var(--text-muted); font-size: 12.5px; display: block;">Claude Haiku for qualification at fractions of a cent per lead.</span></li>
+              <li><strong>Code-side scoring</strong> <span style="font-family: var(--body); font-weight: 400; color: var(--text-muted); font-size: 12.5px; display: block;">LLMs drift on numbers — deterministic scoring keeps results consistent.</span></li>
+            </ul>
+          </div>
+          <div class="side-block">
+            <h6>Role</h6>
+            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.55;">Sole engineer &mdash; specification, JSON workflow construction, prompt design, scoring model, and rollout plan.</p>
+          </div>
+        </aside>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ───────────────── SECURITY ───────────────── -->
+<section class="section" id="security">
+  <div class="section-label">
+    <span class="num">04</span>
+    <span>Security &amp; Trust</span>
+  </div>
+  <h2 class="section-title">
+    Built like it matters. <span class="em">Because it does.</span>
+  </h2>
+  <p class="section-intro">
+    Automation systems handle customer data, payment flows, and business operations &mdash; which makes them attractive targets. Every system I ship is hardened against the realistic threats it will face, and is documented so the team that takes it over can defend it long after I've handed it off.
+  </p>
+
+  <div class="security-wrap">
+    <div class="security-grid">
+
+      <div class="security-card">
+        <div class="sec-icon">i</div>
+        <h4>Payment integrity</h4>
+        <p>Every payment webhook is verified by signature where the provider supports it, and the amount reported paid is independently checked against the amount the system stored at order time &mdash; so a tampered payload cannot result in a confirmed order.</p>
+      </div>
+
+      <div class="security-card">
+        <div class="sec-icon">ii</div>
+        <h4>Idempotency &amp; replay protection</h4>
+        <p>Payment references and order IDs are tracked so the same transaction can never be processed twice. Replay attacks &mdash; the most common form of payment fraud against automation systems &mdash; are rejected at the workflow layer.</p>
+      </div>
+
+      <div class="security-card">
+        <div class="sec-icon">iii</div>
+        <h4>Authenticated dashboards</h4>
+        <p>Internal dashboards sit behind a login system, with role-based access enforced on every API call. Kitchen staff cannot see admin data; managers cannot see other branches; tokens expire after a fixed activity and idle window.</p>
+      </div>
+
+      <div class="security-card">
+        <div class="sec-icon">iv</div>
+        <h4>Secrets &amp; credentials</h4>
+        <p>API keys, payment secrets, and service tokens are never hard-coded into shared files. They live in the workflow engine's credential store, environment variables, or auth files outside the code path &mdash; and rotate when a project changes hands.</p>
+      </div>
+
+      <div class="security-card">
+        <div class="sec-icon">v</div>
+        <h4>Server hardening</h4>
+        <p>Production servers run on Ubuntu with Docker isolation, nginx in front, SSL via Certbot, and firewall rules that close every port the system doesn't need. Direct access to internal services from the public internet is blocked by default.</p>
+      </div>
+
+      <div class="security-card">
+        <div class="sec-icon">vi</div>
+        <h4>Observability &amp; failure logs</h4>
+        <p>Every workflow logs its failures to a dedicated channel &mdash; with stage, error code, and context &mdash; so a problem at 2am can be diagnosed at 9am without guesswork. Silent failures are the enemy of trust.</p>
+      </div>
+
+      <div class="security-card">
+        <div class="sec-icon">vii</div>
+        <h4>Data minimisation</h4>
+        <p>Workflows only request and store the data they actually need. Customer phone numbers, order references, and payment data live in scoped sheets and databases &mdash; never aggregated into one unprotected file.</p>
+      </div>
+
+      <div class="security-card">
+        <div class="sec-icon">viii</div>
+        <h4>Handover discipline</h4>
+        <p>Every system I ship comes with a credentials list (in the client's password manager, not mine), an architecture diagram, and a written plan for "what to do if this breaks." Security that lives only in my head doesn't survive contact with reality.</p>
+      </div>
+
+    </div>
+
+    <div class="trust-statement">
+      <p>I assume an attacker is already trying. The job is to make the easy attacks impossible and the hard ones obvious enough to catch.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────── SERVICES ───────────────── -->
+<section class="section" id="services">
+  <div class="section-label">
+    <span class="num">05</span>
+    <span>Services</span>
+  </div>
+  <h2 class="section-title">
+    What I'm <span class="em">good for</span>.
+  </h2>
+  <p class="section-intro">
+    I take on a narrow set of engagements where automation, AI, and operational rigour intersect. If your problem fits one of these shapes, I can almost certainly help.
+  </p>
+
+  <div class="services-grid">
+    <div class="service">
+      <div class="service-num">/ 01</div>
+      <h4>WhatsApp &amp; messaging commerce</h4>
+      <p>End-to-end conversational ordering, booking, and customer service bots on WhatsApp, Telegram, or SMS &mdash; with payment, voice notes, multi-language support, and human handoff when it matters.</p>
+    </div>
+    <div class="service">
+      <div class="service-num">/ 02</div>
+      <h4>Payment systems integration</h4>
+      <p>Monnify, Paystack, and international gateway integration with proper webhook verification, amount validation, idempotency, and abandoned-order recovery built in.</p>
+    </div>
+    <div class="service">
+      <div class="service-num">/ 03</div>
+      <h4>Internal tooling &amp; dashboards</h4>
+      <p>Custom admin panels, operational dashboards, and role-based staff systems for teams that have outgrown spreadsheets but don't want a heavyweight SaaS bill.</p>
+    </div>
+    <div class="service">
+      <div class="service-num">/ 04</div>
+      <h4>LLM-powered workflows</h4>
+      <p>Production-grade integration of Claude, GPT, and Whisper into your existing systems &mdash; with structured output, retry logic, prompt caching, and cost guardrails.</p>
+    </div>
+    <div class="service">
+      <div class="service-num">/ 05</div>
+      <h4>Lead generation pipelines</h4>
+      <p>Automated discovery, qualification, and scoring of B2B leads from Google Maps, Yelp, and other public sources &mdash; with LLM-based fit analysis and operator-ready outreach angles.</p>
+    </div>
+    <div class="service">
+      <div class="service-num">/ 06</div>
+      <h4>Audits &amp; rescue work</h4>
+      <p>Inheriting a messy automation setup that nobody trusts? I'll audit it, document it, harden it, and hand it back with workflows your team can ship behind.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────── PROCESS ───────────────── -->
+<section class="section" id="process">
+  <div class="section-label">
+    <span class="num">06</span>
+    <span>Process</span>
+  </div>
+  <h2 class="section-title">
+    How I <span class="em">actually work</span>.
+  </h2>
+  <p class="section-intro">
+    Most automation projects fail because they get built before they get understood. My process exists to keep that from happening.
+  </p>
+
+  <div class="process-list">
+    <div class="process-row">
+      <div class="process-num">i.</div>
+      <h4>Understand the operation</h4>
+      <p>Before I open the workflow engine, I want to see how the work happens today &mdash; the WhatsApp threads, the spreadsheets, the workarounds. Automation that doesn't match how a team actually operates gets quietly abandoned.</p>
+    </div>
+    <div class="process-row">
+      <div class="process-num">ii.</div>
+      <h4>Specify, then build</h4>
+      <p>I write down the data model, the workflows, the integrations, and the failure modes before I build them. The spec is short. The build is faster because of it.</p>
+    </div>
+    <div class="process-row">
+      <div class="process-num">iii.</div>
+      <h4>Ship the smallest useful slice first</h4>
+      <p>A working booking webhook on day three is more valuable than a complete architecture on day twenty. I sequence builds so each phase delivers value independently.</p>
+    </div>
+    <div class="process-row">
+      <div class="process-num">iv.</div>
+      <h4>Harden for production</h4>
+      <p>Retry logic, error workflows, rate limiting, dedup, observability. Every production handoff includes a failure-mode walkthrough &mdash; not just a green checkmark.</p>
+    </div>
+    <div class="process-row">
+      <div class="process-num">v.</div>
+      <h4>Document for the next person</h4>
+      <p>Every system I ship comes with a one-page architecture diagram, a credentials list (in your password manager, not mine), and the answer to "what do I do if this breaks at 2am."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────── CTA / CONTACT ───────────────── -->
+<section class="cta-section" id="contact">
+  <div class="pre-cta">Available for new work &mdash; Q2 2026</div>
+  <h2>Let's build something <span class="em">that actually ships</span>.</h2>
+  <p>
+    Whether it's a full-time role, a fixed-scope contract, or an audit of an existing system &mdash; if it lives in the space between automation, AI, and real business operations, I want to hear about it.
+  </p>
+  <div class="cta-buttons">
+    <a href="mailto:olawaleemmanuel100@gmail.com" class="btn btn-primary">
+      olawaleemmanuel100@gmail.com
+      <span class="arrow">↗</span>
+    </a>
+    <a href="https://www.linkedin.com/in/olawale-olaonipekun-0505303b4" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+      LinkedIn
+      <span class="arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo"><span class="dot"></span>Olawale Emmanuel Olaonipekun</span>
+      <p>AI Automation Engineer building production-grade workflow systems &mdash; quietly, reliably, around the clock.</p>
+    </div>
+    <div class="footer-col">
+      <h6>Sections</h6>
+      <a href="#about">About</a>
+      <a href="#stack">Stack</a>
+      <a href="#work">Selected work</a>
+      <a href="#security">Security &amp; trust</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+    </div>
+    <div class="footer-col">
+      <h6>Elsewhere</h6>
+      <a href="mailto:olawaleemmanuel100@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/olawale-olaonipekun-0505303b4" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://x.com/LaoniAI" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+      <a href="https://github.com/olawaleemmanuel09" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Olawale Emmanuel Olaonipekun. All rights reserved.</span>
+    <span>Designed &amp; built by hand · Lagos, Nigeria</span>
+  </div>
+</footer>
+
+<script>
+  // Smooth-scroll offset for fixed nav
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+      if (href === '#' || href.length < 2) return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Nav state on scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > 50) {
+      nav.style.background = 'rgba(13, 12, 10, 0.88)';
+      nav.style.borderBottom = '1px solid rgba(255, 240, 200, 0.12)';
+    } else {
+      nav.style.background = 'rgba(13, 12, 10, 0.7)';
+      nav.style.borderBottom = '1px solid rgba(255, 240, 200, 0.08)';
+    }
+  }, { passive: true });
+</script>
+
+</body>
+</html>
